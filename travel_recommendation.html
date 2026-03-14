@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TravelBloom | Recommendation App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <h2>TravelBloom</h2>
+        </div>
+        <div class="nav-links">
+            <a href="travel_recommendation.html">Home</a>
+            <a href="about_us.html">About Us</a>
+            <a href="contact_us.html">Contact Us</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter keyword...">
+            <button id="btnSearch">Search</button>
+            <button id="btnReset" class="reset-btn">Reset</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
+            <p>It encourages exploration of unfamiliar territories, embracing<br>diverse cultures and landscapes.</p>
+            <button style="padding: 15px 40px;">BOOK NOW</button>
+        </div>
+    </div>
+
+    <!-- The Result Popup -->
+    <div id="resultPopup">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <div id="resultsContainer" class="results-grid">
+            <!-- Results injected here by JS -->
+        </div>
+    </div>
+
+    <script src="travel_recommendation.js"></script>
+</body>
+
+</html>
