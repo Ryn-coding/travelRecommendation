@@ -98,7 +98,7 @@ closeBtn.addEventListener('click', () => {
     popup.style.display = 'none';
 });
 document.addEventListener('click', (event) => {
-    if(event.target !== popup && !popup.contains(event.target) && event.target !== btnSearch) {
+    if (event.target !== popup && !popup.contains(event.target) && event.target !== btnSearch && event.target !== searchInput) {
         popup.style.display = 'none';
     }
 });

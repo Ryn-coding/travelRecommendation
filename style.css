@@ -106,8 +106,9 @@ button:hover {
     position: fixed;
     top: 100px;
     right: 50px;
-    width: 450px;
-    max-height: 80vh;
+    max-width: 800px;
+    max-height: 70vh;
+    width: 100%;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
     border-radius: 20px;
@@ -134,7 +135,7 @@ button:hover {
 /* Grid Layout for Results - Task 8 */
 .results-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -175,6 +176,7 @@ button:hover {
     font-size: 1.5rem;
     color: white;
 }
+
 /* Page Content Wrapper */
 .page-container {
     padding: 120px 10% 50px 10%;
