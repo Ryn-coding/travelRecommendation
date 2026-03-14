@@ -17,32 +17,54 @@ const resultsContainer = document.getElementById('resultsContainer');
 const closeBtn = document.getElementById('closePopup');
 
 // Task 7 & 8: Search Logic
-btnSearch.addEventListener('click', async () => {
+async function performSearch() {
     const keyword = searchInput.value.toLowerCase().trim();
     const data = await getRecommendations();
 
-    resultsContainer.innerHTML = ''; // Clear old results
+    resultsContainer.innerHTML = '';
     let results = [];
 
     // Keyword variations logic
     if (keyword === 'beach' || keyword === 'beaches') {
         results = data.beaches;
+
     } else if (keyword === 'temple' || keyword === 'temples') {
         results = data.temples;
+
     } else if (keyword === 'country' || keyword === 'countries') {
-        // Flattening countries to show cities
-        data.countries.forEach(country => results.push(...country.cities));
+        // Flatten countries → cities
+        data.countries.forEach(country =>
+            results.push(...country.cities)
+        );
+
+    } else {
+        results = [
+            "No results found. Try searching for 'beach', 'temple', or 'country'."
+        ];
     }
 
     if (results.length > 0) {
         displayResults(results);
-    } else {
-        alert("Try searching for 'beach', 'temple', or 'country'");
     }
-});
+}
+
+
+// 🧠 Search while typing
+searchInput.addEventListener('input', performSearch);
+
+
+// 🖱️ Search on button click
+btnSearch.addEventListener('click', performSearch);
 
 // Task 8: Display in Popup
 function displayResults(results) {
+
+    if (typeof results[0] === 'string') {
+        resultsContainer.innerHTML = `<p>${results[0]}</p>`;
+        popup.style.display = 'block';
+        return;
+    }
+
     results.forEach(item => {
         const card = document.createElement('div');
         card.className = 'result-card';
@@ -74,4 +96,9 @@ btnReset.addEventListener('click', () => {
 // Close popup manually
 closeBtn.addEventListener('click', () => {
     popup.style.display = 'none';
+});
+document.addEventListener('click', (event) => {
+    if(event.target !== popup && !popup.contains(event.target) && event.target !== btnSearch) {
+        popup.style.display = 'none';
+    }
 });
